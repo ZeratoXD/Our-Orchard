@@ -20,7 +20,7 @@ import com.generation.OurOrchard.security.JwtService;
 public class UserService {
 
 	@Autowired
-	private UserRepository usuarioRepository;
+	private UserRepository userRepository;
 
 	@Autowired
 	private JwtService jwtService;
@@ -28,29 +28,29 @@ public class UserService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	public Optional<User> cadastrarUsuario(User usuario) {
+	public Optional<User> userRegister(User user) {
 
-		if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent())
+		if (userRepository.findByEmail(user.getEmail()).isPresent())
 			return Optional.empty();
 
-		usuario.setPassword(criptografarSenha(usuario.getPassword()));
+		user.setPassword(encryptPassword(user.getPassword()));
 
-		return Optional.of(usuarioRepository.save(usuario));
+		return Optional.of(userRepository.save(user));
 
 	}
 
-	public Optional<User> atualizarUsuario(User usuario) {
+	public Optional<User> userUpdate(User user) {
 
-		if (usuarioRepository.findById(usuario.getId()).isPresent()) {
+		if (userRepository.findById(user.getId()).isPresent()) {
 
-			Optional<User> buscaUsuario = usuarioRepository.findByEmail(usuario.getEmail());
+			Optional<User> userSearch = userRepository.findByEmail(user.getEmail());
 
-			if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
+			if ((userSearch.isPresent()) && (userSearch.get().getId() != user.getId()))
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User already exists!", null);
 
-			usuario.setPassword(criptografarSenha(usuario.getPassword()));
+			user.setPassword(encryptPassword(user.getPassword()));
 
-			return Optional.ofNullable(usuarioRepository.save(usuario));
+			return Optional.ofNullable(userRepository.save(user));
 
 		}
 
@@ -58,28 +58,28 @@ public class UserService {
 
 	}
 
-	public Optional<UserLogin> autenticarUsuario(Optional<UserLogin> usuarioLogin) {
+	public Optional<UserLogin> userAuthenticate(Optional<UserLogin> userLogin) {
 
-		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getEmail(),
-				usuarioLogin.get().getPassword());
+		var credentials = new UsernamePasswordAuthenticationToken(userLogin.get().getEmail(),
+				userLogin.get().getPassword());
 
-		Authentication authentication = authenticationManager.authenticate(credenciais);
+		Authentication authentication = authenticationManager.authenticate(credentials);
 
 		if (authentication.isAuthenticated()) {
 
-			Optional<User> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+			Optional<User> user = userRepository.findByEmail(userLogin.get().getEmail());
 
-			if (usuario.isPresent()) {
+			if (user.isPresent()) {
 
-				usuarioLogin.get().setId(usuario.get().getId());
-				usuarioLogin.get().setName(usuario.get().getName());
-				usuarioLogin.get().setEmail(usuario.get().getEmail());
-				usuarioLogin.get().setPhoto(usuario.get().getPhoto());
-				usuarioLogin.get().setType(usuario.get().getType());
-				usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getEmail()));
-				usuarioLogin.get().setPassword("");
+				userLogin.get().setId(user.get().getId());
+				userLogin.get().setName(user.get().getName());
+				userLogin.get().setEmail(user.get().getEmail());
+				userLogin.get().setPhoto(user.get().getPhoto());
+				userLogin.get().setType(user.get().getType());
+				userLogin.get().setToken(gerarToken(userLogin.get().getEmail()));
+				userLogin.get().setPassword("");
 
-				return usuarioLogin;
+				return userLogin;
 
 			}
 
@@ -89,16 +89,16 @@ public class UserService {
 
 	}
 
-	private String criptografarSenha(String senha) {
+	private String encryptPassword(String password) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		return encoder.encode(senha);
+		return encoder.encode(password);
 
 	}
 
-	private String gerarToken(String usuario) {
-		return "Bearer " + jwtService.generateToken(usuario);
+	private String gerarToken(String user) {
+		return "Bearer " + jwtService.generateToken(user);
 	}
 
 }

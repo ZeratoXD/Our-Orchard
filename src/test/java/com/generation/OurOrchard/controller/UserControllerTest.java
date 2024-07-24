@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.controller;
+package com.generation.OurOrchard.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,7 +41,7 @@ public class UserControllerTest {
 
 		userRepository.deleteAll();
 
-		userService.cadastrarUsuario(new User(1L, "John Doe", "password123", "administrator", "john.doe@example.com", "photo.jpg"));
+		userService.userRegister(new User(1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "--"));
 
 	}
 
@@ -49,13 +49,12 @@ public class UserControllerTest {
 	@DisplayName("Cadastrar Um Usuário")
 	public void deveCriarUmUsuario() {
 
-		HttpEntity<User> bodyRequest = new HttpEntity<User>(new User(1L, 
-			"Paulo Antunes", "matchupitchu123","administrator","paulo_antunes@test.com","photoXD.jpg"));
+		HttpEntity<User> bodyRequest = new HttpEntity<User>(new User(1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "--"));
 
-		ResponseEntity<User> corpoResposta = testRestTemplate
-			.exchange("/usuarios/cadastrar", HttpMethod.POST, bodyRequest, User.class);
+		ResponseEntity<User> bodyResponse = testRestTemplate
+			.exchange("/user/register", HttpMethod.POST, bodyRequest, User.class);
 
-		assertEquals(HttpStatus.CREATED, corpoResposta.getStatusCode());
+		assertEquals(HttpStatus.CREATED, bodyResponse.getStatusCode());
 	
 	}
 
@@ -63,12 +62,12 @@ public class UserControllerTest {
 	@DisplayName("Não deve permitir duplicação do Usuário")
 	public void naoDeveDuplicarUsuario() {
 
-		userService.cadastrarUsuario(new User(1L, "John Doe", "password123", "administrator", "john.doe@example.com", "photo.jpg"));
+		userService.userRegister(new User(1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "--"));
 
-		HttpEntity<User> bodyRequest = new HttpEntity<User>(new User(1L, "John Doe", "password123", "administrator", "john.doe@example.com", "photo.jpg"));
+		HttpEntity<User> bodyRequest = new HttpEntity<User>(new User(1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "--"));
 
 		ResponseEntity<User> bodyResponse = testRestTemplate
-			.exchange("/usuarios/cadastrar", HttpMethod.POST, bodyRequest, User.class);
+			.exchange("/user/register", HttpMethod.POST, bodyRequest, User.class);
 
 		assertEquals(HttpStatus.BAD_REQUEST, bodyResponse.getStatusCode());
 	}
@@ -77,14 +76,14 @@ public class UserControllerTest {
 	@DisplayName("Atualizar um Usuário")
 	public void deveAtualizarUmUsuario() {
 
-		Optional<User> userRegister = userService.cadastrarUsuario(new User(1L, "John Doe", "password123", "admin", "john.doe@example.com", "photo.jpg"));
-		User userUpdate = (new User(1L, "John Doe", "password123", "administrator", "john.doe@example.com", "photo.jpg"));
+		Optional<User> userRegister = userService.userRegister(new User( 1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "--"));
+		User userUpdate = (new User(1L, "Teste", "rootroot", "Admin", "root@rootxd.com", "foto.jpg"));
 		
 		HttpEntity<User> bodyRequest = new HttpEntity<User>(userUpdate);
 
 		ResponseEntity<User> bodyResponse = testRestTemplate
-			.withBasicAuth("root@root.com", "rootroot")
-			.exchange("/usuarios/atualizar", HttpMethod.PUT, bodyRequest, User.class);
+			.withBasicAuth("root@rootxd.com", "rootroot")
+			.exchange("/user/register", HttpMethod.PUT, bodyRequest, User.class);
 
 		assertEquals(HttpStatus.OK, ((ResponseEntity<User>) bodyRequest).getStatusCode());
 		
@@ -94,16 +93,17 @@ public class UserControllerTest {
 	@DisplayName("Listar todos os Usuários")
 	public void deveMostrarTodosUsuarios() {
 
-		userService.cadastrarUsuario(new User());
+		userService.userRegister(new User());
 		
-		userService.cadastrarUsuario(new User());
+		userService.userRegister(new User());
 
 		ResponseEntity<String> response = testRestTemplate
-		.withBasicAuth("root@root.com", "rootroot")
-			.exchange("/usuarios/all", HttpMethod.GET, null, String.class);
+		.withBasicAuth("root@rootxd.com", "rootroot")
+			.exchange("/user/all", HttpMethod.GET, null, String.class);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 
 	}
 
 }
+

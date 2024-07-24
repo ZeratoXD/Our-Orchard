@@ -49,7 +49,7 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<UserLogin> authenticateUser(@RequestBody Optional<UserLogin> userLogin) {
 
-		return userService.autenticarUsuario(userLogin)
+		return userService.userAuthenticate(userLogin)
 				.map(response -> ResponseEntity.status(HttpStatus.OK).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
@@ -57,7 +57,7 @@ public class UserController {
 	@PostMapping("/register")
 	public ResponseEntity<User> postUser(@RequestBody @Valid User user) {
   System.out.println("User: " + user.toString());
-		return userService.cadastrarUsuario(user)
+		return userService.userRegister(user)
 				.map(response -> ResponseEntity.status(HttpStatus.CREATED).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 
@@ -66,7 +66,7 @@ public class UserController {
 	@PutMapping("/update")
 	public ResponseEntity<User> putUser(@Valid @RequestBody User user) {
 
-		return userService.atualizarUsuario(user)
+		return userService.userUpdate(user)
 				.map(response -> ResponseEntity.status(HttpStatus.OK).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 

@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.controller;
+package com.generation.OurOrchard.controller;
 
 import com.generation.OurOrchard.model.Category;
 import com.generation.OurOrchard.repository.CategoryRepository;

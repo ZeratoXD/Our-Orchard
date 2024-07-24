@@ -1,10 +1,10 @@
-package com.generation.NossoPomar;
+package com.generation.OurOrchard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NossoPomarApplicationTests {
+class OurOrchardApplicationTests {
 
 	@Test
 	void contextLoads() {
