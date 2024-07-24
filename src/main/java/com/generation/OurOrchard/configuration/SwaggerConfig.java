@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.configuration;
+package com.generation.OurOrchard.configuration;
 
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
