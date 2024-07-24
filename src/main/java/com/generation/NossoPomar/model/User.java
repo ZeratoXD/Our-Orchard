@@ -24,23 +24,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O atributo Nome é Obrigatório")
-	@Size(min = 3, max = 100, message = "Tamanho minimo: 5, maximo: 100")
+	@NotBlank(message = "The Name attribute is Mandatory")
+	@Size(min = 3, max = 100, message = "Minimum size: 5, maximum: 100")
 	private String name;
 
-	@NotBlank(message = "O atributo Senha é Obrigatório")
-	@Size(min = 8, message = "Tamanho minimo: 8")
+	@NotBlank(message = "The Date attribute is Mandatory")
+	@Size(min = 8, message = "Minimum size: 8")
 	private String password;
 
-	@NotBlank(message = "O campo tipo do usuário é Obrigatório")
+	@NotBlank(message = "The field Type attribute is Mandatory")
 	private String type;
 
-	@NotBlank(message = "O atributo Email é Obrigatório")
-	@Size(min = 10, max = 1000, message = "Tamanho minimo: 10, maximo: 1000")
+	@NotBlank(message = "The E-mail attribute is Mandatory")
+	@Size(min = 10, max = 1000, message = "Minimum size: 10, maximum: 1000")
 	@Email
 	private String email;
 
-	@Size(min = 2, max = 10000, message = "Tamanho minimo: 2, maximo: 1000")
+	@Size(min = 2, max = 10000, message = "Minimum size: 2, maximum: 1000")
 	private String photo;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)
