@@ -42,32 +42,32 @@ public class UserController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getById(@PathVariable Long id) {
-		return userRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+		return userRepository.findById(id).map(response -> ResponseEntity.ok(response))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<UserLogin> autenticarUsuario(@RequestBody Optional<UserLogin> userLogin) {
+	public ResponseEntity<UserLogin> authenticateUser(@RequestBody Optional<UserLogin> userLogin) {
 
 		return userService.autenticarUsuario(userLogin)
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+				.map(response -> ResponseEntity.status(HttpStatus.OK).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<User> postUsuario(@RequestBody @Valid User user) {
+	public ResponseEntity<User> postUser(@RequestBody @Valid User user) {
   System.out.println("User: " + user.toString());
 		return userService.cadastrarUsuario(user)
-				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+				.map(response -> ResponseEntity.status(HttpStatus.CREATED).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<User> putUsuario(@Valid @RequestBody User user) {
+	public ResponseEntity<User> putUser(@Valid @RequestBody User user) {
 
 		return userService.atualizarUsuario(user)
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+				.map(response -> ResponseEntity.status(HttpStatus.OK).body(response))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
 	}

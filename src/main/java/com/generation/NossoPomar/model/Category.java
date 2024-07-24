@@ -23,11 +23,11 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O Atributo Nome é Obrigatório")
-	@Size(min = 5, max = 255, message = "Tamanho mínimo: 5, máximo: 255")
+	@NotBlank(message = "The Name Attribute is Mandatory")
+	@Size(min = 5, max = 255, message = "Minimum size: 5, maximum: 255")
 	private String name;
 
-	@Size(max = 255, message = "Tamanho máximo: 255")
+	@Size(max = 255, message = "Maximum size: 255")
 	private String description;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.REMOVE)

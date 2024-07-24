@@ -30,18 +30,18 @@ public class Product {
 	@NotNull(message = "The Date attribute is Mandatory")
 	private LocalDate validity;
 
-	@NotBlank(message = "O atributo Foto é Obrigatório")
+	@NotBlank(message = "The Photo attribute is Mandatory")
 	@Size(min = 2, max = 10000, message = "Tamanho minimo: 10, maximo: 10000")
 	private String photo;
 
-	@NotBlank(message = "O atributo Descrição é Obrigatório")
+	@NotBlank(message = "The Description attribute is Mandatory")
 	@Size(min = 5, max = 1000, message = "Tamanho minimo: 5, maximo: 1000")
 	private String description;
 
-	@NotNull(message = "O atributo Quantidade é Obrigatório")
+	@NotNull(message = "The Quantity attribute is Mandatory")
 	private int quantity;
 
-	@NotNull(message = "O atributo Preço é Obrigatório")
+	@NotNull(message = "The Price attribute is Mandatory")
 	private Double price;
 	
 	@ManyToOne
