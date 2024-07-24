@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.model;
+package com.generation.OurOrchard.model;
 
 import java.time.LocalDate;
 import java.util.Date;

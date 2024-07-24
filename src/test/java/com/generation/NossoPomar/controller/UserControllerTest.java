@@ -17,9 +17,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.generation.NossoPomar.model.User;
-import com.generation.NossoPomar.repository.UserRepository;
-import com.generation.NossoPomar.service.UserService;
+import com.generation.OurOrchard.model.User;
+import com.generation.OurOrchard.repository.UserRepository;
+import com.generation.OurOrchard.service.UserService;
 
 
 

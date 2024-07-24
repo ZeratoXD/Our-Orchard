@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.controller;
+package com.generation.OurOrchard.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.NossoPomar.model.User;
-import com.generation.NossoPomar.model.UserLogin;
-import com.generation.NossoPomar.repository.UserRepository;
-import com.generation.NossoPomar.service.UserService;
+import com.generation.OurOrchard.model.User;
+import com.generation.OurOrchard.model.UserLogin;
+import com.generation.OurOrchard.repository.UserRepository;
+import com.generation.OurOrchard.service.UserService;
 
 import jakarta.validation.Valid;
 

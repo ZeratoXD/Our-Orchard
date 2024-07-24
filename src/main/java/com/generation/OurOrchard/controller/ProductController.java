@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.controller;
+package com.generation.OurOrchard.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.NossoPomar.model.Product;
-import com.generation.NossoPomar.repository.CategoryRepository;
-import com.generation.NossoPomar.repository.ProductRepository;
+import com.generation.OurOrchard.model.Product;
+import com.generation.OurOrchard.repository.CategoryRepository;
+import com.generation.OurOrchard.repository.ProductRepository;
 
 import jakarta.validation.Valid;
 

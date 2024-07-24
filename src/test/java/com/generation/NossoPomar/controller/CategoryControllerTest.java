@@ -1,7 +1,7 @@
 package com.generation.NossoPomar.controller;
 
-import com.generation.NossoPomar.model.Category;
-import com.generation.NossoPomar.repository.CategoryRepository;
+import com.generation.OurOrchard.model.Category;
+import com.generation.OurOrchard.repository.CategoryRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

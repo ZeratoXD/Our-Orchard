@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.security;
+package com.generation.OurOrchard.security;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.generation.NossoPomar.model.User;
+import com.generation.OurOrchard.model.User;
 
 public class UserDetailsImpl implements UserDetails {
 

@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.security;
+package com.generation.OurOrchard.security;
 
 import java.util.Optional;
 
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.NossoPomar.model.User;
-import com.generation.NossoPomar.repository.UserRepository;
+import com.generation.OurOrchard.model.User;
+import com.generation.OurOrchard.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

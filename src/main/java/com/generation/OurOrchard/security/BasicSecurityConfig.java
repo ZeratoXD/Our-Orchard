@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.security;
+package com.generation.OurOrchard.security;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 

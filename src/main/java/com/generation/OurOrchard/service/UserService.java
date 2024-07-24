@@ -1,4 +1,4 @@
-package com.generation.NossoPomar.service;
+package com.generation.OurOrchard.service;
 
 import java.util.Optional;
 
@@ -11,10 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.NossoPomar.model.User;
-import com.generation.NossoPomar.model.UserLogin;
-import com.generation.NossoPomar.repository.UserRepository;
-import com.generation.NossoPomar.security.JwtService;
+import com.generation.OurOrchard.model.User;
+import com.generation.OurOrchard.model.UserLogin;
+import com.generation.OurOrchard.repository.UserRepository;
+import com.generation.OurOrchard.security.JwtService;
 
 @Service
 public class UserService {

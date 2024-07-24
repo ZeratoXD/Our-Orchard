@@ -1,10 +1,12 @@
-package com.generation.NossoPomar.repository;
+package com.generation.OurOrchard.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.generation.NossoPomar.model.User;
+import com.generation.OurOrchard.model.User;
+
+
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
